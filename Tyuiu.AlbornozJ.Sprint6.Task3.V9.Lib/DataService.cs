@@ -16,24 +16,20 @@ namespace Tyuiu.AlbornozJ.Sprint6.Task3.V9.Lib
             int[,] resultMatrix = (int[,])matrix.Clone();
 
             
-            int sortColumn = 4;
+            int[] fifthColumn = new int[rows];
+            for (int i = 0; i < rows; i++)
+            {
+                fifthColumn[i] = matrix[i, 4];
+            }
 
             
-            for (int i = 0; i < rows - 1; i++)
+            Array.Sort(fifthColumn);
+
+            
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < rows - i - 1; j++)
-                {
-                    if (resultMatrix[j, sortColumn] > resultMatrix[j + 1, sortColumn])
-                    {
-                        
-                        for (int k = 0; k < columns; k++)
-                        {
-                            int temp = resultMatrix[j, k];
-                            resultMatrix[j, k] = resultMatrix[j + 1, k];
-                            resultMatrix[j + 1, k] = temp;
-                        }
-                    }
-                }
+                resultMatrix[i, 4] = fifthColumn[i];
+               
             }
 
             return resultMatrix;
